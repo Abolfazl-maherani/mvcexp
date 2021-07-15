@@ -1,8 +1,40 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: "tahoma";
+  text-align: center;
 }
 
 a {
   color: #00B7FF;
+}
+
+
+div#cart {
+    width: 400px;
+    min-height: 110px;
+    padding: 20px;
+    background: #f1f1f1;
+    margin: 15px auto;
+    border-radius: 8px;
+}
+
+.title {
+    background: #ccc;
+    font-size:15px;
+    padding: 5px;
+    font-weight:700
+}
+.caption{
+  margin-top:20px;
+  margin-top:20px;
+}
+
+.box-cart {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.title h1 {
+    font-size: 1.5em;
+    color: #444;
 }
