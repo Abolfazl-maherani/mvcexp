@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+
+    </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+    <% if (typeof title === "string" ) { %>
+        <h2>
+            <%= title %>
+        </h2>
+        <% } else {
+            title.foreach(function(val){%>
+            <h1>
+                <%= val %>
+            </h1>
+            <%});}%>
+                <p>Welcome to
+                    <%= title %>
+                </p>
+</body>
+
+</html>
