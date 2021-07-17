@@ -4,9 +4,11 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var boot = require("./src/bootstrap");
+let configApp = require("./src/config/configapp.js");
 
 var app = express();
-
+app.locals = configApp;
+console.log(app);
 // view engine setup
 var expressLayouts = require('express-ejs-layouts');
 app.set('views', path.join(__dirname, './src/views'));
@@ -24,10 +26,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 let router = express.Router();
 app.use(router);
 boot(app, router);
-//Main Page (Home)
+
+
+//static Page 
+// home
 router.get("/", (req, res, next) => {
-    res.render("index", { title: "exp" });
+    res.render("index", {
+        layout: "layouts/home"
+    });
 });
+
 
 
 

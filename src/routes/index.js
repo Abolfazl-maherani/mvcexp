@@ -2,7 +2,7 @@ let postController = require("../controllers/postController");
 
 
 exports.appRoute = router => {
-    router.get("/Post/title", postController.getTitle);
-    router.get("/Post", postController.getPost);
+    router.get("/postController/Showtitle", postController.Showtitle);
+    router.get("/postController", postController.Showpost);
 
 };
