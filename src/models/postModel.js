@@ -1,7 +1,8 @@
 var db = require('../config/connectdb');
 
 // get  post title 
-async function getPostTitle() {
+async function getPostTitle(id = null) {
+    let query = (!id) ? "SELECT (title) FROM exppost" : `SELECT (title) FROM exppost WHERE id = $ { id }`;
 
     try {
         const res = await db.any("SELECT (title) FROM exppost");
@@ -17,7 +18,8 @@ async function getPostTitle() {
 
 
 // get post caption
-async function getPostCaption() {
+async function getPostCaption(id = null) {
+    let query = (!id) ? "SELECT (caption) FROM exppost" : `SELECT(caption) FROM exppost WHERE id = $ { id }`;
 
     try {
         const res = await db.any("SELECT (caption) FROM exppost");
@@ -32,13 +34,17 @@ async function getPostCaption() {
 }
 
 // get post
-async function getPost() {
+async function getPost(id = null) {
+
+    let query = (!id) ? "SELECT id,caption,title FROM exppost " : `SELECT id,caption, title FROM exppost WHERE id = ${id}`;
+
 
     try {
-        const res = await db.many("SELECT caption,title FROM exppost");
+        const res = await db.many(query);
         if (res) {
 
             return res;
+
         }
 
     } catch (e) {
@@ -46,9 +52,6 @@ async function getPost() {
     }
 
 }
-getPost();
-
-
 module.exports = {
     getPostTitle: getPostTitle,
     getPostCaption: getPostCaption,

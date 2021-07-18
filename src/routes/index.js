@@ -1,8 +1,8 @@
-let postController = require("../controllers/postController");
+let postController = require("../controllers/pageController");
 
 
 exports.appRoute = router => {
-    router.get("/postController/Showtitle", postController.Showtitle);
-    router.get("/postController", postController.Showpost);
+    router.get("/blog/post/:postname", postController.post);
+    router.get("/blog", postController.blog);
 
 };

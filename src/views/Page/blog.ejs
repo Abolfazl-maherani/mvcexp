@@ -1,0 +1,26 @@
+<div class="box-cart">
+    <% db.forEach((val, index)=>{
+        let href = url.singlepost + val.id;     
+        %>
+
+        <div id="cart" class="cart-box">
+            <div class="title">
+                <h1>
+                    <%=val.title%>
+                </h1>
+            </div>
+            <div class="caption">
+                <%=val.caption%>
+            </div>
+            <div class="">
+
+                <a type="button" href="<%=href%>" class=" readmore btn btn-info d-block ">نمایش بیشتر</a>
+
+            </div>
+        </div>
+
+        <% }) %>
+</div>
+</body>
+
+</html>

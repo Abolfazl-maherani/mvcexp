@@ -34,6 +34,7 @@ div#cart {
 .caption {
     margin-top: 20px;
     margin-top: 20px;
+    color: #444;
 }
 
 .box-cart {
@@ -204,7 +205,7 @@ body {
         top: 0;
     }
     .mastfoot {
-        position: absolute;
+        position: static;
         bottom: 0;
     }
     .site-wrapper-inner {
@@ -243,9 +244,8 @@ h5,
 h6,
 .h6 {
     margin-top: 0;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
-    color: #333;
+    color: #d2d2d2;
 }
 
 
@@ -416,4 +416,8 @@ h6,
 
 .navbar-static-top {
     margin-bottom: 19px;
+}
+
+.readmore {
+    margin: 20px 0
 }

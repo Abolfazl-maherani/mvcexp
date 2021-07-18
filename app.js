@@ -8,7 +8,6 @@ let configApp = require("./src/config/configapp.js");
 
 var app = express();
 app.locals = configApp;
-console.log(app);
 // view engine setup
 var expressLayouts = require('express-ejs-layouts');
 app.set('views', path.join(__dirname, './src/views'));
