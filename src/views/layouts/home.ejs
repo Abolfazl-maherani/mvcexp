@@ -12,13 +12,13 @@
                         </h3>
                         <nav>
                             <ul class="nav masthead-nav">
-                                <li class="active">
-                                    <a href="#">خانه</a>
-                                </li>
-                                <li><a href="#">بلاگ</a></li>
-                                <li>
-                                    <a href="#">درباره ما</a>
-                                </li>
+                                <%menu.forEach(val=>{%>
+                                    <li class="active">
+                                        <a href="<%=val.menuurl%>">
+                                            <%=val.menuname%>
+                                        </a>
+                                    </li>
+                                    <%})%>
                             </ul>
                         </nav>
                     </div>

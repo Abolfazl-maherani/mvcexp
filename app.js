@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var boot = require("./src/bootstrap");
 let configApp = require("./src/config/configapp.js");
-
+let menu = require('./src/models/menuModel.js');
 var app = express();
 app.locals = configApp;
 // view engine setup
@@ -26,8 +26,13 @@ let router = express.Router();
 app.use(router);
 boot(app, router);
 
+menu.getmenuitem().then((value) => {
+    app.locals.menu = value;
+
+});
 
 //static Page 
+
 // home
 router.get("/", (req, res, next) => {
     res.render("index", {

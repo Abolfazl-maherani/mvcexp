@@ -1,42 +1,61 @@
-<div class="container">
+<%
+if(typeof next == "string"){
+    hrefnext = "";
+    classnext = "disable"
+
+}
+else{
+    hrefnext = url.singlepost + next.id; 
+     classnext = "";
+}
+if(typeof prev == "string"){
+    hrefprev = "";
+     classprev = "disable"
+}
+else{
+    hrefprev = url.singlepost + prev.id; 
+    classprev = "";
+
+}
+
+%>
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-sm-12 blog-main">
+
+                <div class="blog-post">
+                    <h2 class="blog-post-title">
+                        <%=db.title%>
+                    </h2>
+                    <!-- <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p> -->
+
+                    <p>
+                        <%=db.caption%>
+                    </p>
 
 
+                </div>
+                <!-- /.blog-post -->
 
 
-
-    <div class="row">
-
-        <div class="col-sm-12 blog-main">
-
-            <div class="blog-post">
-                <h2 class="blog-post-title">
-                    <%=db.title%>
-                </h2>
-                <!-- <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p> -->
-
-                <p>
-                    <%=db.caption%>
-                </p>
-
+                <nav>
+                    <ul class="pager">
+                        <li><a class="<%=classprev%>" href="<%=hrefprev%>">پست قبلی</a></li>
+                        <li>
+                            <a class="<%=classnext%>" href="<%=hrefnext%>">پست بعدی</a>
+                        </li>
+                    </ul>
+                </nav>
 
             </div>
-            <!-- /.blog-post -->
+            <!-- /.blog-main -->
 
 
-            <nav>
-                <ul class="pager">
-                    <li><a href="#">Previous</a></li>
-                    <li><a href="#">Next</a></li>
-                </ul>
-            </nav>
+            <!-- /.blog-sidebar -->
 
         </div>
-        <!-- /.blog-main -->
-
-
-        <!-- /.blog-sidebar -->
+        <!-- /.row -->
 
     </div>
-    <!-- /.row -->
-
-</div>

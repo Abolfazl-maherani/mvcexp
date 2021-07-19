@@ -366,6 +366,10 @@ h6,
 .pager {
     margin-bottom: 60px;
     text-align: left;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    gap: 15px;
 }
 
 .pager>li>a {
@@ -373,9 +377,12 @@ h6,
     padding: 10px 20px;
     text-align: center;
     border-radius: 30px;
+    color: #444;
 }
-
-
+.pager>li>a.disable{
+    opacity: .5;
+    cursor: default;
+}
 /*
  * Blog posts
  */

@@ -1,25 +1,64 @@
 var postModel = require('../models/postModel');
-
-exports.post = function(req, res, next) {
-    let postId = req.params.postname;
-    let db = [];
-    postModel.getPost(postId).then(val => {
-        if (val.length == 1) {
-            db = val[0];
-        } else {
-            db = val;
-        }
-        res.render("page/post", {
-            title: (db.title === "string") ? db.title : "single page blog",
-            db: db
-        });
+var menuModel = require('../models/menuModel');
+const { post } = require('../../app');
 
 
 
 
+exports.post = [function(req, res, next) {
+        let page = {};
+        let postId = req.params.postname;
 
-    })
-}
+
+        postModel.getPost(postId).then(val => {
+            if (val.length == 1) {
+                res.locals.db = val[0];
+            } else {
+                res.locals.db = val;
+            }
+
+
+            res.locals.title = (res.locals.db.title === "string") ? res.locals.db.title : "single page blog";
+
+            next();
+        })
+
+
+    }, function(req, res, next) {
+        postModel.prevpost(req.params.postname).then(val => {
+                res.locals.prev = val[0];
+                next();
+            },
+
+            reje => {
+                res.locals.prev = ""
+                next();
+            }
+
+        )
+
+
+    },
+
+    function(req, res) {
+        postModel.nextpost(req.params.postname).then(val => {
+
+                res.locals.next = val[0];
+                res.render("page/post");
+
+            },
+            reje => {
+                res.locals.next = ""
+                res.render("page/post");
+
+
+
+            }
+
+        )
+
+    }
+]
 
 
 
