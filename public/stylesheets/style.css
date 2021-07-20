@@ -381,7 +381,7 @@ h6,
 }
 .pager>li>a.disable{
     opacity: .5;
-    cursor: default;
+    cursor: not-allowed;
 }
 /*
  * Blog posts
@@ -389,6 +389,15 @@ h6,
 
 .blog-post {
     margin-bottom: 60px;
+}
+.blog-post p{
+    background:#f1f1f1;
+    color: #444;
+    padding: 30px;
+    text-align: justify;
+    border-radius:8px;
+    margin-top:50px
+        
 }
 
 .blog-post-title {
@@ -427,4 +436,8 @@ h6,
 
 .readmore {
     margin: 20px 0
+}
+
+ul.nav.navbar-nav.navbar-right {
+    display: flex;
 }

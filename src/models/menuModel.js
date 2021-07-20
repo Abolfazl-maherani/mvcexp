@@ -5,7 +5,7 @@ async function getmenuitem(id = null) {
     try {
         const res = await db.any("SELECT * FROM menu");
         if (res) {
-            return (res);
+            return res;
         }
 
     } catch (e) {
@@ -13,7 +13,6 @@ async function getmenuitem(id = null) {
     }
 
 }
-
 module.exports = {
     getmenuitem: getmenuitem,
 }

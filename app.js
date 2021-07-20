@@ -6,13 +6,24 @@ var logger = require('morgan');
 var boot = require("./src/bootstrap");
 let configApp = require("./src/config/configapp.js");
 let menu = require('./src/models/menuModel.js');
+
+
 var app = express();
+var admin = express();
+
 app.locals = configApp;
-// view engine setup
+admin.locals = configApp;
+
+
+
+// app config
 var expressLayouts = require('express-ejs-layouts');
 app.set('views', path.join(__dirname, './src/views'));
 app.set('view engine', 'ejs');
+admin.set('views', path.join(__dirname, './src/admin/views'));
+admin.set('view engine', 'ejs');
 app.use(expressLayouts);
+admin.use(expressLayouts);
 app.set("layout", "layouts/layout")
 
 app.use(logger('dev'));
@@ -20,26 +31,35 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+admin.use("/admin", express.static(path.join(__dirname, "src", "admin", 'public')));
+app.use("/", admin);
+
+
+
 
 // init router
-let router = express.Router();
-app.use(router);
-boot(app, router);
+let routerapp = express.Router();
+let routerAdmin = express.Router();
+app.use(routerapp);
+admin.use(routerAdmin);
+
+boot.adminboot(admin, routerAdmin);
+boot.appboot(app, routerapp);
 
 menu.getmenuitem().then((value) => {
     app.locals.menu = value;
 
 });
 
-//static Page 
+
+
 
 // home
-router.get("/", (req, res, next) => {
+routerapp.get("/", (req, res, next) => {
     res.render("index", {
         layout: "layouts/home"
     });
 });
-
 
 
 

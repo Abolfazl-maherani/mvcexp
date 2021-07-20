@@ -1,6 +1,5 @@
 var postModel = require('../models/postModel');
 var menuModel = require('../models/menuModel');
-const { post } = require('../../app');
 
 
 
