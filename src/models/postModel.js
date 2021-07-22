@@ -48,10 +48,38 @@ async function getPost(id = null) {
         }
 
     } catch (e) {
-        throw new Error("cant get post post")
+        throw new Error("cant get  post")
     }
 
 }
+
+async function addPost(posttile, postcaption) {
+    const column = ["posttitle", "postcaption"];
+    const tblName = "exppost";
+    value = {
+        posttile: posttile,
+        postcaption: postcaption
+    }
+
+    try {
+        const res = await db.helpers.insert([value], column, tblName);
+        if (res) {
+
+            return res;
+
+        }
+
+    } catch (e) {
+        throw new Error("cant  add post")
+    }
+
+}
+
+addPost("sdsfsfddaf", "Asdfafds").then(val => {
+    console.log(val)
+}, rej => {
+    console.log(rej)
+})
 
 async function nextpost(postid) {
 

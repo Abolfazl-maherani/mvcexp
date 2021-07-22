@@ -12,6 +12,10 @@ let urlPage = {
     blog: path.join("/blog", path.sep),
     singlepost: path.join("/blog", "post", path.sep),
 
+    admin: {
+        index: path.join("/admin", path.sep),
+        editPost: path.join("/admin?editpost="),
+    }
 }
 
 

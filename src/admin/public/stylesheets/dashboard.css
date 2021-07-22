@@ -1,3 +1,12 @@
+@font-face {
+  font-family: "Yekan";
+  src: url("../font/Yekan.woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
 /*
  * Base structure
  */
@@ -5,6 +14,8 @@
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
   padding-top: 50px;
+  font-family: "Yekan";
+  direction: rtl;
 }
 
 
@@ -38,7 +49,7 @@ body {
     position: fixed;
     top: 51px;
     bottom: 0;
-    left: 0;
+    right: 0;
     z-index: 1000;
     display: block;
     padding: 20px;
@@ -98,8 +109,52 @@ body {
 }
 .placeholder {
   margin-bottom: 20px;
+  text-decoration: none;
 }
 .placeholder img {
   display: inline-block;
   border-radius: 50%;
+}
+a{
+  text-decoration:none !important;
+}
+
+span.text-muted {
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+.input {
+    border-radius: 20px;
+    background: #f1f1f1;
+    outline: 0;
+    border: 0;
+    padding: 15px 20px;
+}
+.inputbtn{
+  border-radius: 20px;
+  padding: 12px 25px;
+  
+max-width:100px;
+margin-right:auto;
+
+}
+form.add-post {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+}
+form.add-post texterea{
+  max-width:100%;
+  width:100%;
+  resize:vertical;
+  max-height:600px;
+}
+a{
+  text-decoration:none;
 }
