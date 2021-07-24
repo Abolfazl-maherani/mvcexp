@@ -1,6 +1,8 @@
 var postModel = require('../models/postModel');
 var menuModel = require('../models/menuModel');
 const { post } = require('../../app');
+var exp = require("express");
+const { json } = require('express');
 
 exports.index = [function(req, res, next) {
 
@@ -8,7 +10,6 @@ exports.index = [function(req, res, next) {
             next();
         } else {
             postModel.getPost().then(val => {
-                console.log(this);
                 res.render("index", {
                     title: "dashboard",
                     db: val
@@ -26,7 +27,7 @@ exports.index = [function(req, res, next) {
         }, rej => {
             res.render("index", {
                 title: "dashboard",
-                db: false
+                db: ""
             });
         })
     },
@@ -48,4 +49,27 @@ exports.index = [function(req, res, next) {
         })
 
     }
-]
+];
+exports.addpost = function(req, res) {
+
+    if (req.method == "POST") {
+
+        let title, cpation;
+        title = ("title" in req.body && req.body.title.length > 1) ? req.body.title : null;
+        caption = ("caption" in req.body && req.body.caption.length > 1) ? req.body.caption : null;
+        postModel.addPost(title, caption).then(val => {
+            console.log(val);
+            res.redirect('/admin?addpost=true');
+
+
+
+        }, rej => {
+            console.log(rej)
+        });
+    } else {
+        res.redirect('/admin?addpost=false');
+    }
+
+
+
+}

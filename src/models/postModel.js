@@ -54,32 +54,17 @@ async function getPost(id = null) {
 }
 
 async function addPost(posttile, postcaption) {
-    const column = ["posttitle", "postcaption"];
-    const tblName = "exppost";
-    value = {
-        posttile: posttile,
-        postcaption: postcaption
-    }
 
-    try {
-        const res = await db.helpers.insert([value], column, tblName);
-        if (res) {
 
-            return res;
+    return await db.any(`INSERT INTO exppost(title, caption) VALUES ('${posttile}', '${postcaption}') RETURNING id`);
 
-        }
-
-    } catch (e) {
-        throw new Error("cant  add post")
-    }
 
 }
 
-addPost("sdsfsfddaf", "Asdfafds").then(val => {
-    console.log(val)
-}, rej => {
-    console.log(rej)
-})
+
+
+
+
 
 async function nextpost(postid) {
 
@@ -173,5 +158,6 @@ module.exports = {
     prevpost: prevpost,
     nextpost: nextpost,
     lengthpost: lengthpost,
+    addPost: addPost,
 
 }

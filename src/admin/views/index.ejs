@@ -6,7 +6,7 @@ let titleAction = (typeof editpost== "object")?"ویرایش پست":  "پست �
             <div class="col-sm-3 col-md-2 sidebar">
                 <ul class="nav nav-sidebar">
                     <li class="active">
-                        <a href="#">پست جدید <span class="sr-only">(current)</span></a>
+                        <a href="#">پست ها <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="">
                         <a href="#">اضافه کردن منو<span class="sr-only"></span></a>
@@ -22,7 +22,7 @@ let titleAction = (typeof editpost== "object")?"ویرایش پست":  "پست �
                 <h3 class="my-3 page-header text-dark">پست های نوشته شده</h3>
                 <div class="row placeholders">
                     <%db.forEach(val=>{%>
-                        <a href="<%=url.admin.editPost + val.id%>" class="col-xs-6 col-sm-3 placeholder">
+                        <a href="<%=url.admin.editPost + val.id%>#editform" class="col-xs-6 col-sm-3 placeholder">
                             <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
                             <h4>
                                 <%=val.title%>
@@ -42,17 +42,18 @@ let titleAction = (typeof editpost== "object")?"ویرایش پست":  "پست �
                     <%=titleAction%>
                 </h3>
                 <%if (typeof editpost==="object" ){%>
-                    <form class="d-block add-post" action="">
+                    <form id="editform" class="d-block add-post" action="/editpost">
                         <input class="input " type="text" name="title" value="<%=editpost.title%>" placeholder=" عنوان متن ">
-                        <textarea name="caption " class="input " placeholder="کپشن " id=" " cols="30 " rows="10 " value="fd "><%=editpost.caption%></textarea>
-                        <input type="submit " class="btn btn-primary inputbtn " value="ارسال ">
+                        <textarea name="caption" class="input " placeholder="کپشن " id=" " cols="30 " rows="10 " value="fd "><%=editpost.caption%></textarea>
+                        <input type="submit" class="btn btn-primary inputbtn " value="ارسال ">
+                        <a href="<%=url.admin.index%>#addpost" class="btn btn-info">پست جدید</a>
 
                     </form>
                     <%}else{%>
-                        <form class="d-block add-post " action=" ">
-                            <input class="input " type="text " name="title " placeholder="عنوان متن ">
-                            <textarea ame="caption " class="input " placeholder="کپشن " id=" " cols="30 " rows="10 " value="fd "></textarea>
-                            <input type="submit " class="btn btn-primary inputbtn " value="ارسال ">
+                        <form id="addpost" class="d-block add-post " action="addpost" method="post">
+                            <input class="input " type="text " name="title" placeholder="عنوان متن ">
+                            <textarea name="caption" class="input " placeholder="کپشن " id=" " cols="30 " rows="10 " value="fd "></textarea>
+                            <input type="submit" class="btn btn-primary inputbtn " value="ارسال ">
 
                         </form>
                         <%}%>

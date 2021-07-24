@@ -49,9 +49,6 @@ exports.post = [function(req, res, next) {
             reje => {
                 res.locals.next = ""
                 res.render("page/post");
-
-
-
             }
 
         )
