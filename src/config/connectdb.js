@@ -10,6 +10,7 @@ const initOptions = {
     query(e) {
         console.log('QUERY:', e.query);
     },
+    capSQL: true,
     // global event notification;
     error(error, e) {
         if (e.cn) {

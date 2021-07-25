@@ -6,6 +6,41 @@ var logger = require('morgan');
 var boot = require("./src/bootstrap");
 let configApp = require("./src/config/configapp.js");
 let menu = require('./src/models/menuModel.js');
+let post = require('./src/models/postModel.js');
+var db = require('./src/config/connectdb');
+
+post.lengthpost().then(val => {
+    if (val[0].count == 0)
+        post.addPost("express", "express description").then(val => {}, rej => {
+            console.log(rej);
+
+        })
+})
+
+menu.lengthmenu().then(val => {
+    if (val[0].count == 0) {
+
+        menu.addmenu("صفحه اصلی", "/").then(val => {}, rej => {
+            console.log(rej);
+        });
+        menu.addmenu("بلاگ", "/blog").then(val => {}, rej => {
+            console.log(rej);
+        });
+        menu.addmenu("داشبورد", "/admin").then(val => {}, rej => {
+            console.log(rej);
+        });
+        menu.getmenuitem().then((value) => {
+            app.locals.menu = value;
+
+        });
+
+    }
+
+})
+
+
+
+
 
 
 var app = express();
